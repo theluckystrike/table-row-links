@@ -83,7 +83,8 @@ export function newRowId(): string {
 
 export function rowLabel(line: string, index: number): string {
 	const text = (cells(line)?.[0] ?? '').replace(MARKER_RE, '').trim();
-	return text === '' ? `Row ${index}` : text.slice(0, 40);
+	// Count code points, so the limit does not split an emoji.
+	return text === '' ? `Row ${index}` : Array.from(text).slice(0, 40).join('');
 }
 
 function uriPart(text: string): string {

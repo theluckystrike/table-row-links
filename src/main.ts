@@ -125,10 +125,12 @@ export default class TableRowLinksPlugin extends Plugin {
 		const keep = new Set<string>();
 		for (const source of this.app.vault.getMarkdownFiles()) {
 			const text = source === file ? before : await this.app.vault.cachedRead(source);
-			for (const m of text.matchAll(/obsidian:\/\/table-row\?[^\s)<>]+/g)) {
+			// A bare URI can end before punctuation. An HTML link can encode its ampersands.
+			for (const m of text.matchAll(/obsidian:\/\/table-row\?[^\s)<>"']+/g)) {
 				try {
-					const p = new URL(m[0]).searchParams;
-					if (p.get('file') === file.path && (!p.get('vault') || p.get('vault') === this.app.vault.getName())) keep.add(p.get('row') ?? '');
+					const p = new URL(m[0].replace(/&amp;/g, '&')).searchParams;
+					const row = /^[a-z0-9]{6}(?![a-z0-9])/.exec(p.get('row') ?? '')?.[0];
+					if (row && p.get('file') === file.path && (!p.get('vault') || p.get('vault') === this.app.vault.getName())) keep.add(row);
 				} catch { /* Invalid links do not retain an anchor. */ }
 			}
 			// A wikilink in a table cell escapes its alias pipe. A Markdown link can encode its path.

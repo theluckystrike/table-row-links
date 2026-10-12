@@ -1,5 +1,11 @@
 # table-row-links
 
+## 1.0.2
+
+### Patch Changes
+
+- 534135a: Cleanup keeps anchors that a bare row URI before punctuation or an HTML row link references, and row labels no longer split an emoji at the 40 character limit.
+
 ## 1.0.1
 
 ### Patch Changes
