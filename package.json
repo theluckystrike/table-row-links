@@ -1,6 +1,6 @@
 {
 	"name": "table-row-links",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"private": true,
 	"description": "Copy links to marked data rows in Markdown tables and open notes at those rows.",
 	"main": "main.js",

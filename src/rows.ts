@@ -27,7 +27,7 @@ function boundaries(line: string): number[] {
 
 export function cells(line: string): string[] | null {
 	const b = boundaries(line);
-	if (b.length < 2 || line.slice(0, b[0]).trim() || line.slice(b.at(-1)! + 1).trim()) return null;
+	if (b.length < 2 || line.slice(0, b[0]).trim() || line.slice(b[b.length - 1]! + 1).trim()) return null;
 	return b.slice(0, -1).map((start, i) => line.slice(start + 1, b[i + 1]));
 }
 
