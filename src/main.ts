@@ -15,7 +15,7 @@ export default class TableRowLinksPlugin extends Plugin {
 
 	async onload(): Promise<void> {
 		await this.loadSettings();
-		const pro = createGitHubSponsors(this.app, this.manifest.id, SPONSORS);
+		const pro = createGitHubSponsors(this.app, this.manifest.id, SPONSORS, this);
 		pro.init();
 		this.pro = pro;
 		bindPro(pro);
