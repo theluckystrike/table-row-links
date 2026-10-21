@@ -1,7 +1,10 @@
 import { browser, expect } from '@wdio/globals';
 import { obsidianPage } from 'wdio-obsidian-service';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { lastNotice, pluginId } from './load';
+
+// The monorepo keeps the golden vectors in packages/spec. The public repo export copies them to tests/vectors.
+const VECTORS = existsSync('tests/vectors/table-row-links.json') ? 'tests/vectors/table-row-links.json' : '../../packages/spec/vectors/table-row-links.json';
 
 const FILE = 'Notes/My #1 Fruit.md';
 const TEXT = '# Fruit\n| Fruit | Count |\n|---|---|\n| Apples %%row:abc123%% | 3 |\n| Pears %%row:def456%% | 5 |\n';
@@ -80,7 +83,7 @@ describe('table row behavior', function () {
 		expect(result).toEqual([false, false, false, true, false]);
 	});
 
-	const vectors = JSON.parse(readFileSync('../../packages/spec/vectors/table-row-links.json', 'utf8')) as { app_cases: { name: string; file: string; row?: string; expected_line?: number; notice?: string; hidden?: string; visible?: string }[] };
+	const vectors = JSON.parse(readFileSync(VECTORS, 'utf8')) as { app_cases: { name: string; file: string; row?: string; expected_line?: number; notice?: string; hidden?: string; visible?: string }[] };
 	for (const c of vectors.app_cases.filter((x) => x.row)) {
 		it(c.name, async function () {
 			await openRow(c.file, c.row!);

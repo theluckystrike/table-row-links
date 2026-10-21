@@ -54,7 +54,7 @@ Links in email, messages, another vault or non-Markdown files are outside the sc
 
 ## Install
 
-Table Row Links needs Obsidian 1.13.4 or later. When it is listed in the community directory, open Settings, Community plugins, Browse, and search for "Table Row Links". Select Install and Enable.
+Table Row Links needs Obsidian 1.13.4 or later. Open Settings, Community plugins, Browse, and search for "Table Row Links". Select Install and Enable.
 
 To install a release by hand, put `main.js`, `manifest.json` and `styles.css` in `<vault>/.obsidian/plugins/table-row-links/`. Reload the community plugin list and enable Table Row Links. Install it in the vault where you want to open row links.
 
@@ -68,6 +68,8 @@ To install a release by hand, put `main.js`, `manifest.json` and `styles.css` in
 The parser supports tables with leading and trailing pipes, including single-cell rows and escaped pipes. It skips fenced code and indented code. Tables without outer pipes, HTML tables and generated tables are outside this parser's scope.
 
 ## Settings
+
+After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
 
 "Editor context menu item" is on by default. Turn it off to hide the menu action; the commands remain available. Obsidian's Hotkeys settings lets you assign keys to the commands. The plugin sets no default hotkey.
 

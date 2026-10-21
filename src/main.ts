@@ -4,6 +4,8 @@ import type { SponsorsManager } from './license/index';
 import { SPONSORS, bindPro, isPro, resetPro } from './pro';
 import { ID_RE, dataRows, findMarkedLine, markedRows, removeUnusedAnchors, rowAnchor } from './rows';
 import { DEFAULT_SETTINGS, normalizeSettings, TableRowLinksSettingTab, type TableRowLinksSettings } from './settings';
+import { setupHello } from './hello/index';
+import WHATS_NEW from './whats-new.json';
 
 const PRO_TICK_MS = 6 * 60 * 60 * 1000;
 
@@ -14,6 +16,8 @@ export default class TableRowLinksPlugin extends Plugin {
 	pro: SponsorsManager | null = null;
 
 	async onload(): Promise<void> {
+		// First: "What's new" reads its state before the settings load (packages/hello). It does not wait.
+		setupHello(this, WHATS_NEW);
 		await this.loadSettings();
 		const pro = createGitHubSponsors(this.app, this.manifest.id, SPONSORS, this);
 		pro.init();
