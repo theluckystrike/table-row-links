@@ -1,5 +1,11 @@
 # table-row-links
 
+## 1.1.1
+
+### Patch Changes
+
+- The Table Row Links notice for a Pro feature now has a Sponsor on GitHub button.
+
 ## 1.1.0
 
 ### Minor Changes

@@ -1,16 +1,9 @@
 {
 	"id": "table-row-links",
 	"name": "Table Row Links",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"changes": [
-		"New Send feedback command. It opens a page where you can report a problem or suggest an idea.",
-		"Cleanup keeps anchors that a bare row URI before punctuation or an HTML row link references.",
-		"Row labels no longer split an emoji at the 40 character limit."
-	],
-	"changes_user": [
-		"New Send feedback command. It opens a page where you can report a problem or suggest an idea.",
-		"Pro cleanup no longer removes an anchor whose row link is followed by punctuation or sits in an HTML link.",
-		"A row label no longer cuts an emoji in half at 40 characters."
+		"The Table Row Links notice for a Pro feature now has a Sponsor on GitHub button."
 	],
 	"tip": "Run Jump to table row... and type part of a label to move the cursor to a marked row in this note.",
 	"thanks": "Hi, I am Michael, a solo developer in Poland. Table Row Links is one of over 100 small plugins that I make. Thank you for trusting it with your tables.",
